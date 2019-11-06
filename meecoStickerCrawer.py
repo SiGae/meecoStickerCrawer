@@ -13,7 +13,12 @@ output = []
 a = 1
 length = len(stic)
 for i in stic:
-    urllib.request.urlretrieve("https://meeco.kr{}".format(i.get('style').replace("background-image: url(.", "").replace(");", "")), "{}.jpg".format( str(a)))
+    forma = "jpg"
+    part = i.get('style').replace("background-image: url(.", "").replace(");", "")
+    if ".gif" in part:
+        forma = "gif"
+
+    urllib.request.urlretrieve("https://meeco.kr{}".format(part), "{}.{}".format( str(a), forma))
     print("{}/{}".format(a, length))
     int(a)
     a += 1
