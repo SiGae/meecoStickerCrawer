@@ -10,8 +10,11 @@ html = req.text
 soup = BeautifulSoup(html, 'html.parser')
 stic = soup.find_all("div", {"class":re.compile("stk_img_v stk_file.")})
 output = []
-a = 0
+a = 1
+length = len(stic)
 for i in stic:
     urllib.request.urlretrieve("https://meeco.kr{}".format(i.get('style').replace("background-image: url(.", "").replace(");", "")), "{}.jpg".format( str(a)))
+    print("{}/{}".format(a, length))
     int(a)
     a += 1
+    
